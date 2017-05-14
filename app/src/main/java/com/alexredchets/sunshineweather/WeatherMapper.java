@@ -1,8 +1,12 @@
 package com.alexredchets.sunshineweather;
 
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
-import com.alexredchets.sunshineweather.WeatherModel.WeatherModel;
-import com.alexredchets.sunshineweather.WeatherModel.WeatherModelList;
+import com.alexredchets.sunshineweather.WeatherModel.current.WeatherCurrent;
+import com.alexredchets.sunshineweather.WeatherModel.current.WeatherCurrentMain;
+import com.alexredchets.sunshineweather.WeatherModel.daily.WeatherDaily;
+import com.alexredchets.sunshineweather.WeatherModel.daily.WeatherDailyList;
+import com.alexredchets.sunshineweather.WeatherModel.hourly.WeatherHourly;
+import com.alexredchets.sunshineweather.WeatherModel.hourly.WeatherHourlyList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,19 +19,53 @@ public class WeatherMapper {
     public WeatherMapper() {
     }
 
-    public List<Weather> mapWeather(WeatherModel response){
+    public Weather mapCurrentWeather(WeatherCurrent response){
+        Weather mWeather = new Weather();
+
+        if (response != null) {
+            mWeather.setDayTemperature((int)response.getMain().getTemp());
+            mWeather.setHumidity((int)response.getMain().getHumidity());
+            mWeather.setWindSpeed((int)response.getWind().getSpeed());
+            mWeather.setPressure((int)response.getMain().getPressure());
+            mWeather.setIconId(response.getWeather()[0].getIcon());
+        }
+
+        return mWeather;
+    }
+
+    public List<Weather> mapDailyWeather(WeatherDaily response){
         List<Weather> weatherList = new ArrayList<>();
 
         if (response != null) {
-            WeatherModelList[] list = response.getList();
+            WeatherDailyList[] list = response.getList();
             if (list != null) {
-                for (WeatherModelList weatherModelList : list) {
+                for (WeatherDailyList WeatherDailyList : list) {
                     Weather weather = new Weather();
-                    weather.setDayTemperature((int)weatherModelList.getTemp().getDay());
-                    weather.setNightTemperature((int)weatherModelList.getTemp().getNight());
-                    weather.setHumidity((int)weatherModelList.getHumidity());
-                    weather.setPressure((int)weatherModelList.getPressure());
-                    weather.setIconId(String.valueOf(weatherModelList.getWeather()[0].getIcon()));
+                    weather.setDayTemperature((int)WeatherDailyList.getTemp().getDay());
+                    weather.setNightTemperature((int)WeatherDailyList.getTemp().getNight());
+                    weather.setHumidity((int)WeatherDailyList.getHumidity());
+                    weather.setPressure((int)WeatherDailyList.getPressure());
+                    weather.setIconId(String.valueOf(WeatherDailyList.getWeather()[0].getIcon()));
+                    weatherList.add(weather);
+                }
+            }
+        }
+
+        return weatherList;
+    }
+
+    public List<Weather> mapHourlyWeather(WeatherHourly response){
+        List<Weather> weatherList = new ArrayList<>();
+
+        if (response != null) {
+            WeatherHourlyList[] list = response.getList();
+            if (list != null) {
+                for (WeatherHourlyList WeatherHourlyList : list){
+                    Weather weather = new Weather();
+                    weather.setDayTemperature((int)WeatherHourlyList.getMain().getTemp());
+                    weather.setHumidity((int)WeatherHourlyList.getMain().getHumidity());
+                    weather.setPressure((int)WeatherHourlyList.getMain().getPressure());
+                    weather.setIconId(String.valueOf(WeatherHourlyList.getWeather()[0].getIcon()));
                     weatherList.add(weather);
                 }
             }

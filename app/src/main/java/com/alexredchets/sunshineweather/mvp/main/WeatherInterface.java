@@ -1,4 +1,4 @@
-package com.alexredchets.sunshineweather.mvp;
+package com.alexredchets.sunshineweather.mvp.main;
 
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
 
@@ -6,9 +6,16 @@ import java.util.List;
 
 public interface WeatherInterface {
 
-    interface WeatherActivityInterface{
+    interface WeatherFragmentInterface{
 
         void onComplete(List<Weather> weatherList);
+
+        void onError(String message);
+    }
+
+    interface CurrentWeatherFragmentInterface{
+
+        void onComplete(Weather weather);
 
         void onError(String message);
     }

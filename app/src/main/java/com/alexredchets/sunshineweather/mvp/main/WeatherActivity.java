@@ -1,9 +1,12 @@
-package com.alexredchets.sunshineweather.mvp;
+package com.alexredchets.sunshineweather.mvp.main;
 
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -25,7 +28,10 @@ public class WeatherActivity extends AppCompatActivity implements WeatherInterfa
 
     @Inject protected WeatherPresenter mWeatherPresenter;
 
-    @BindView(R.id.recycler_view_weather_list) protected RecyclerView mRecyclerView;
+    /*@BindView(R.id.recycler_view_weather_list) protected RecyclerView mRecyclerView;
+    @BindView(R.id.collapsing_toolbar) protected CollapsingToolbarLayout mCollapsingToolbarLayout;
+    @BindView(R.id.app_bar) protected AppBarLayout mAppBarLayout;
+    @BindView(R.id.toolbar) protected Toolbar mToolbar;*/
 
     private WeatherAdapter mWeatherAdapter;
 
@@ -38,6 +44,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherInterfa
 
         ((App)getApplication()).provideWeatherComponent(this).inject(this);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        setCollapsingToolbar();
 
         initializeRecyclerView();
 
@@ -64,7 +73,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherInterfa
 
     @Override
     public void onClick(Weather weather) {
-        Toast.makeText(this, weather.getDayTemperature(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.valueOf(weather.getDayTemperature()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -76,5 +85,30 @@ public class WeatherActivity extends AppCompatActivity implements WeatherInterfa
     @Override
     public void onError(String message) {
 
+    }
+
+    private void setCollapsingToolbar() {
+        mCollapsingToolbarLayout.setTitle(" ");
+        mAppBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded and collapsed
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    mCollapsingToolbarLayout.setTitle(getString(R.string.app_name));
+                    isShow = true;
+                } else if (isShow) {
+                    mCollapsingToolbarLayout.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
     }
 }

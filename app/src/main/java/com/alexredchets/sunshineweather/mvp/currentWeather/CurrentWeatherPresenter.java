@@ -1,10 +1,11 @@
-package com.alexredchets.sunshineweather.mvp;
+package com.alexredchets.sunshineweather.mvp.currentWeather;
 
 import android.util.Log;
 
 import com.alexredchets.sunshineweather.WeatherApi;
 import com.alexredchets.sunshineweather.WeatherMapper;
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
+import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 
 import java.util.List;
 
@@ -14,41 +15,45 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
-public class WeatherPresenter implements WeatherInterface.WeatherPresenterInterface{
+public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresenterInterface{
 
-    private static final String TAG = WeatherPresenter.class.getSimpleName();
-    private Retrofit retrofit;
-    private WeatherInterface.WeatherActivityInterface view;
-
-    @Inject protected WeatherMapper mWeatherMapper;
+    private static final String TAG = CurrentWeatherPresenter.class.getSimpleName();
+    private Retrofit mRetrofit;
+    private WeatherInterface.CurrentWeatherFragmentInterface view;
 
     @Inject
-    public WeatherPresenter(Retrofit retrofit, WeatherInterface.WeatherActivityInterface view) {
-        this.retrofit = retrofit;
+    public CurrentWeatherPresenter(Retrofit mRetrofit,
+                                   WeatherInterface.CurrentWeatherFragmentInterface view) {
+        this.mRetrofit = mRetrofit;
         this.view = view;
     }
 
+    @Inject
+    protected WeatherMapper mWeatherMapper;
+
     @Override
     public void fetchData() {
+
         Log.i(TAG, "fetchData started");
 
-        retrofit.create(WeatherApi.class).getWeather("52.051503",
+        mRetrofit.create(WeatherApi.class).getCurrentWeather("52.051503",
                 "113.471191",
                 "metric",
-                "1fcad98585808b3ca4990830bc17bd16")
+                "d73975775ce9c90c9b05799d119ef5e9")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                             Log.e(TAG, "Successfully got data");
 
-                            List<Weather> weatherList = mWeatherMapper.mapWeather(response);
-                            view.onComplete(weatherList);
+                            Weather mWeather = mWeatherMapper.mapCurrentWeather(response);
+                            view.onComplete(mWeather);
                         },
                         throwable -> {
                             Log.e("Error", throwable.getMessage());
 
                             view.onError(throwable.getMessage());
                         });
+
     }
 
     @Override

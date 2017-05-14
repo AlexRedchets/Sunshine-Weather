@@ -1,13 +1,11 @@
-package com.alexredchets.sunshineweather.WeatherModel;
+package com.alexredchets.sunshineweather.WeatherModel.daily;
 
-public class WeatherModelList {
+public class WeatherDailyList {
     private int dt;
-    private double rain;
-    private WeatherModelListTemp temp;
-    private double snow;
+    private WeatherDailyListTemp temp;
     private int deg;
-    private WeatherModelListWeather[] weather;
-    private double humidity;
+    private WeatherDailyListWeather[] weather;
+    private int humidity;
     private double pressure;
     private int clouds;
     private double speed;
@@ -20,28 +18,12 @@ public class WeatherModelList {
         this.dt = dt;
     }
 
-    public double getRain() {
-        return this.rain;
-    }
-
-    public void setRain(double rain) {
-        this.rain = rain;
-    }
-
-    public WeatherModelListTemp getTemp() {
+    public WeatherDailyListTemp getTemp() {
         return this.temp;
     }
 
-    public void setTemp(WeatherModelListTemp temp) {
+    public void setTemp(WeatherDailyListTemp temp) {
         this.temp = temp;
-    }
-
-    public double getSnow() {
-        return this.snow;
-    }
-
-    public void setSnow(double snow) {
-        this.snow = snow;
     }
 
     public int getDeg() {
@@ -52,19 +34,19 @@ public class WeatherModelList {
         this.deg = deg;
     }
 
-    public WeatherModelListWeather[] getWeather() {
+    public WeatherDailyListWeather[] getWeather() {
         return this.weather;
     }
 
-    public void setWeather(WeatherModelListWeather[] weather) {
+    public void setWeather(WeatherDailyListWeather[] weather) {
         this.weather = weather;
     }
 
-    public double getHumidity() {
+    public int getHumidity() {
         return this.humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 

@@ -1,6 +1,6 @@
-package com.alexredchets.sunshineweather.WeatherModel;
+package com.alexredchets.sunshineweather.WeatherModel.hourly;
 
-public class WeatherModelCityCoord {
+public class WeatherHourlyCityCoord {
     private double lon;
     private double lat;
 

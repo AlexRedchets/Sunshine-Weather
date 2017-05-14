@@ -1,6 +1,6 @@
-package com.alexredchets.sunshineweather.WeatherModel;
+package com.alexredchets.sunshineweather.WeatherModel.daily;
 
-public class WeatherModelListWeather {
+public class WeatherDailyListWeather {
     private String icon;
     private String description;
     private String main;

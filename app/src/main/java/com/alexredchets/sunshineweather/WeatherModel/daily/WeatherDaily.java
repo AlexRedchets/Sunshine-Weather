@@ -1,17 +1,17 @@
-package com.alexredchets.sunshineweather.WeatherModel;
+package com.alexredchets.sunshineweather.WeatherModel.daily;
 
-public class WeatherModel {
-    private WeatherModelCity city;
+public class WeatherDaily {
+    private WeatherDailyCity city;
     private int cnt;
     private String cod;
     private double message;
-    private WeatherModelList[] list;
+    private WeatherDailyList[] list;
 
-    public WeatherModelCity getCity() {
+    public WeatherDailyCity getCity() {
         return this.city;
     }
 
-    public void setCity(WeatherModelCity city) {
+    public void setCity(WeatherDailyCity city) {
         this.city = city;
     }
 
@@ -39,11 +39,11 @@ public class WeatherModel {
         this.message = message;
     }
 
-    public WeatherModelList[] getList() {
+    public WeatherDailyList[] getList() {
         return this.list;
     }
 
-    public void setList(WeatherModelList[] list) {
+    public void setList(WeatherDailyList[] list) {
         this.list = list;
     }
 }

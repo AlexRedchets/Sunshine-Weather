@@ -1,8 +1,8 @@
-package com.alexredchets.sunshineweather.WeatherModel;
+package com.alexredchets.sunshineweather.WeatherModel.daily;
 
-public class WeatherModelCity {
+public class WeatherDailyCity {
     private String country;
-    private WeatherModelCityCoord coord;
+    private WeatherDailyCityCoord coord;
     private String name;
     private int id;
     private int population;
@@ -15,11 +15,11 @@ public class WeatherModelCity {
         this.country = country;
     }
 
-    public WeatherModelCityCoord getCoord() {
+    public WeatherDailyCityCoord getCoord() {
         return this.coord;
     }
 
-    public void setCoord(WeatherModelCityCoord coord) {
+    public void setCoord(WeatherDailyCityCoord coord) {
         this.coord = coord;
     }
 

@@ -2,7 +2,7 @@ package com.alexredchets.sunshineweather.injection.components;
 
 import com.alexredchets.sunshineweather.injection.modules.WeatherModule;
 import com.alexredchets.sunshineweather.injection.scopes.PerActivity;
-import com.alexredchets.sunshineweather.mvp.WeatherActivity;
+import com.alexredchets.sunshineweather.mvp.main.WeatherActivity;
 
 import dagger.Subcomponent;
 

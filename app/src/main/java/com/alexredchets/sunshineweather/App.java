@@ -7,7 +7,7 @@ import com.alexredchets.sunshineweather.injection.components.DaggerAppComponent;
 import com.alexredchets.sunshineweather.injection.components.WeatherComponent;
 import com.alexredchets.sunshineweather.injection.modules.AppModule;
 import com.alexredchets.sunshineweather.injection.modules.WeatherModule;
-import com.alexredchets.sunshineweather.mvp.WeatherInterface;
+import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 
 public class App extends Application {
 
