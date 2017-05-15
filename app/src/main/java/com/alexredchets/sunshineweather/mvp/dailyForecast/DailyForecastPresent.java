@@ -19,13 +19,12 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
 
     private static final String TAG = DailyForecastPresent.class.getSimpleName();
     private Retrofit mRetrofit;
-    private WeatherInterface.WeatherFragmentInterface view;
+    private WeatherInterface.WeatherFragmentInterface mVew;
 
     @Inject
-    public DailyForecastPresent(Retrofit mRetrofit,
-                                WeatherInterface.WeatherFragmentInterface view) {
+    public DailyForecastPresent(Retrofit mRetrofit, WeatherInterface.WeatherFragmentInterface mVew) {
         this.mRetrofit = mRetrofit;
-        this.view = view;
+        this.mVew = mVew;
     }
 
     @Inject
@@ -47,12 +46,12 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
                             Log.e(TAG, "Successfully got data");
 
                             List<Weather> mWeatherList = mWeatherMapper.mapDailyWeather(response);
-                            view.onComplete(mWeatherList);
+                            mVew.onComplete(mWeatherList);
                         },
                         throwable -> {
                             Log.e("Error", throwable.getMessage());
 
-                            view.onError(throwable.getMessage());
+                            mVew.onError(throwable.getMessage());
                         });
 
     }

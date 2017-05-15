@@ -12,9 +12,11 @@ public class WeatherModule {
     private WeatherInterface.WeatherFragmentInterface view;
     private WeatherInterface.CurrentWeatherFragmentInterface currentWeatherView;
 
-    public WeatherModule(WeatherInterface.WeatherFragmentInterface view,
-                         WeatherInterface.CurrentWeatherFragmentInterface currentWeatherView) {
+    public WeatherModule(WeatherInterface.WeatherFragmentInterface view) {
         this.view = view;
+    }
+
+    public WeatherModule(WeatherInterface.CurrentWeatherFragmentInterface currentWeatherView) {
         this.currentWeatherView = currentWeatherView;
     }
 

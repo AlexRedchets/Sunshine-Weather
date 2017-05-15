@@ -3,6 +3,7 @@ package com.alexredchets.sunshineweather;
 
 import com.alexredchets.sunshineweather.WeatherModel.current.WeatherCurrent;
 import com.alexredchets.sunshineweather.WeatherModel.daily.WeatherDaily;
+import com.alexredchets.sunshineweather.WeatherModel.hourly.WeatherHourly;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -19,7 +20,7 @@ public interface WeatherApi {
     );
 
     @GET("forecast?")
-    Observable<WeatherCurrent> getHourlyWeather(
+    Observable<WeatherHourly> getHourlyWeather(
             @Query("lat") String latitude,
             @Query("lon") String longitude,
             @Query("cnt") int cnt,

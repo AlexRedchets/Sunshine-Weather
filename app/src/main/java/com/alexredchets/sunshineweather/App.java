@@ -12,6 +12,7 @@ import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 public class App extends Application {
 
     private AppComponent mAppComponent;
+    private WeatherComponent mCurrentWeatherComponent;
     private WeatherComponent mWeatherComponent;
 
     @Override
@@ -20,20 +21,29 @@ public class App extends Application {
 
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this,
-                        "http://api.openweathermap.org/data/2.5/forecast/"))
+                        "http://api.openweathermap.org/data/2.5/"))
                 .build();
-    }
-
-    public WeatherComponent provideWeatherComponent(WeatherInterface.WeatherActivityInterface view){
-        mWeatherComponent = mAppComponent.plus(new WeatherModule(view));
-        return mWeatherComponent;
-    }
-
-    public void releaseWeatherComponent(){
-        mWeatherComponent = null;
     }
 
     public AppComponent provideAppComponent(){
         return mAppComponent;
+    }
+
+    public WeatherComponent provideCurrentWeatherComponent(WeatherInterface.CurrentWeatherFragmentInterface view){
+        mCurrentWeatherComponent = mAppComponent.plus(new WeatherModule(view));
+        return mCurrentWeatherComponent;
+    }
+
+    public WeatherComponent provideWeatherComponent(WeatherInterface.WeatherFragmentInterface view){
+        mWeatherComponent = mAppComponent.plus(new WeatherModule(view));
+        return mWeatherComponent;
+    }
+
+    public void releaseCurrentWeatherComponent(){
+        mCurrentWeatherComponent = null;
+    }
+
+    public void releaseWeatherComponent(){
+        mWeatherComponent = null;
     }
 }

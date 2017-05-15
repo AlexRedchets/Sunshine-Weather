@@ -1,20 +1,7 @@
 package com.alexredchets.sunshineweather.mvp.main;
 
-import android.util.Log;
-
-import com.alexredchets.sunshineweather.WeatherApi;
-import com.alexredchets.sunshineweather.WeatherMapper;
-import com.alexredchets.sunshineweather.WeatherModel.Weather;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-
-public class WeatherPresenter implements WeatherInterface.WeatherPresenterInterface{
+public class WeatherPresenter {
+/*
 
     private static final String TAG = WeatherPresenter.class.getSimpleName();
     private Retrofit retrofit;
@@ -56,4 +43,5 @@ public class WeatherPresenter implements WeatherInterface.WeatherPresenterInterf
     public void fetchDataDB() {
 
     }
+*/
 }

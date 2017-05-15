@@ -1,4 +1,4 @@
-package com.alexredchets.sunshineweather.mvp.currentWeather;
+package com.alexredchets.sunshineweather.mvp.hourlyForecast;
 
 import android.util.Log;
 
@@ -7,35 +7,37 @@ import com.alexredchets.sunshineweather.WeatherMapper;
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
 import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
-public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresenterInterface{
+public class HourlyForecastPresenter implements WeatherInterface.WeatherPresenterInterface {
 
-    private static final String TAG = CurrentWeatherPresenter.class.getSimpleName();
+    private static final String TAG = HourlyForecastPresenter.class.getSimpleName();
     private Retrofit mRetrofit;
-    private WeatherInterface.CurrentWeatherFragmentInterface view;
+    private WeatherInterface.WeatherFragmentInterface mView;
 
     @Inject
-    CurrentWeatherPresenter(Retrofit mRetrofit,
-                            WeatherInterface.CurrentWeatherFragmentInterface view) {
+    public HourlyForecastPresenter(Retrofit mRetrofit, WeatherInterface.WeatherFragmentInterface mView) {
         this.mRetrofit = mRetrofit;
-        this.view = view;
+        this.mView = mView;
     }
 
     @Inject
-    WeatherMapper mWeatherMapper;
+    protected WeatherMapper mWeatherMapper;
 
     @Override
     public void fetchData() {
 
         Log.i(TAG, "fetchData started");
 
-        mRetrofit.create(WeatherApi.class).getCurrentWeather("52.051503",
+        mRetrofit.create(WeatherApi.class).getHourlyWeather("52.051503",
                 "113.471191",
+                5,
                 "metric",
                 "d73975775ce9c90c9b05799d119ef5e9")
                 .subscribeOn(Schedulers.newThread())
@@ -43,15 +45,14 @@ public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresente
                 .subscribe(response -> {
                             Log.e(TAG, "Successfully got data");
 
-                            Weather mWeather = mWeatherMapper.mapCurrentWeather(response);
-                            view.onComplete(mWeather);
+                            List<Weather> mWeatherList = mWeatherMapper.mapHourlyWeather(response);
+                            mView.onComplete(mWeatherList);
                         },
                         throwable -> {
                             Log.e("Error", throwable.getMessage());
 
-                            view.onError(throwable.getMessage());
+                            mView.onError(throwable.getMessage());
                         });
-
     }
 
     @Override

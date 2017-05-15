@@ -51,12 +51,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
         Weather weather = mWeatherList.get(position);
 
-        holder.textViewTemperature.setText(weather.getDayTemperature() + " °C");
+        /*holder.textViewTemperature.setText(weather.getDayTemperature() + " °C");
         holder.textViewWind.setText(weather.getWindSpeed() + " m/s");
         Glide
                 .with(mContext)
                 .load("http://openweathermap.org/img/w/" + weather.getIconId() + ".png")
-                .into(holder.imageViewWeather);
+                .into(holder.imageViewWeather);*/
 
     }
 
@@ -67,9 +67,9 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.text_view_temperature) protected TextView textViewTemperature;
+        /*@BindView(R.id.text_view_temperature) protected TextView textViewTemperature;
         @BindView(R.id.text_view_wind) protected TextView textViewWind;
-        @BindView(R.id.image_view_weather_image) protected ImageView imageViewWeather;
+        @BindView(R.id.image_view_weather_image) protected ImageView imageViewWeather;*/
 
         public ViewHolder(View view) {
             super(view);
