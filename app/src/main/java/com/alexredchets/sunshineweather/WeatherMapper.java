@@ -27,7 +27,10 @@ public class WeatherMapper {
             mWeather.setHumidity((int)response.getMain().getHumidity());
             mWeather.setWindSpeed((int)response.getWind().getSpeed());
             mWeather.setPressure((int)response.getMain().getPressure());
+            mWeather.setCityName(response.getName());
+            mWeather.setCountryCode(response.getSys().getCountry());
             mWeather.setIconId(response.getWeather()[0].getIcon());
+            mWeather.setDt(response.getDt());
         }
 
         return mWeather;

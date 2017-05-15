@@ -8,6 +8,9 @@ public class Weather {
     private int humidity;
     private int pressure;
     private String iconId;
+    private String cityName;
+    private String CountryCode;
+    private long dt;
 
     public Weather() {}
 
@@ -57,5 +60,29 @@ public class Weather {
 
     public void setIconId(String iconId) {
         this.iconId = iconId;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCountryCode() {
+        return CountryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        CountryCode = countryCode;
+    }
+
+    public long getDt() {
+        return dt;
+    }
+
+    public void setDt(long dt) {
+        this.dt = dt;
     }
 }

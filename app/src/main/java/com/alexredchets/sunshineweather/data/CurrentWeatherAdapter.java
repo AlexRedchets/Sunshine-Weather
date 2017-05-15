@@ -10,6 +10,10 @@ import com.alexredchets.sunshineweather.R;
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -41,6 +45,10 @@ public class CurrentWeatherAdapter {
         mTextViewHumidity.setText(String.valueOf(mWeather.getHumidity()));
         mTextViewPressure.setText(String.valueOf(mWeather.getPressure()));
         mTextViewWind.setText(String.valueOf(mWeather.getWindSpeed()));
+        mTextViewCountry.setText(mWeather.getCountryCode());
+        mTextViewCity.setText(mWeather.getCityName());
+        String dateString = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date(mWeather.getDt()*1000));
+        mTextViewDate.setText(dateString);
         Glide
                 .with(mContext)
                 .load("http://openweathermap.org/img/w/" + mWeather.getIconId() + ".png")
