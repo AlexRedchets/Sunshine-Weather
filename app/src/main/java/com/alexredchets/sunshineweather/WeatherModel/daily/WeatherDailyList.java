@@ -3,11 +3,11 @@ package com.alexredchets.sunshineweather.WeatherModel.daily;
 public class WeatherDailyList {
     private int dt;
     private WeatherDailyListTemp temp;
-    private int deg;
+    private double deg;
     private WeatherDailyListWeather[] weather;
-    private int humidity;
+    private double humidity;
     private double pressure;
-    private int clouds;
+    private double clouds;
     private double speed;
 
     public int getDt() {
@@ -26,11 +26,11 @@ public class WeatherDailyList {
         this.temp = temp;
     }
 
-    public int getDeg() {
+    public double getDeg() {
         return this.deg;
     }
 
-    public void setDeg(int deg) {
+    public void setDeg(double deg) {
         this.deg = deg;
     }
 
@@ -42,11 +42,11 @@ public class WeatherDailyList {
         this.weather = weather;
     }
 
-    public int getHumidity() {
+    public double getHumidity() {
         return this.humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
 
@@ -58,11 +58,11 @@ public class WeatherDailyList {
         this.pressure = pressure;
     }
 
-    public int getClouds() {
+    public double getClouds() {
         return this.clouds;
     }
 
-    public void setClouds(int clouds) {
+    public void setClouds(double clouds) {
         this.clouds = clouds;
     }
 

@@ -2,7 +2,6 @@ package com.alexredchets.sunshineweather;
 
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
 import com.alexredchets.sunshineweather.WeatherModel.current.WeatherCurrent;
-import com.alexredchets.sunshineweather.WeatherModel.current.WeatherCurrentMain;
 import com.alexredchets.sunshineweather.WeatherModel.daily.WeatherDaily;
 import com.alexredchets.sunshineweather.WeatherModel.daily.WeatherDailyList;
 import com.alexredchets.sunshineweather.WeatherModel.hourly.WeatherHourly;
@@ -49,6 +48,7 @@ public class WeatherMapper {
                     weather.setHumidity((int)WeatherDailyList.getHumidity());
                     weather.setPressure((int)WeatherDailyList.getPressure());
                     weather.setIconId(String.valueOf(WeatherDailyList.getWeather()[0].getIcon()));
+                    weather.setDt(WeatherDailyList.getDt());
                     weatherList.add(weather);
                 }
             }
@@ -69,6 +69,7 @@ public class WeatherMapper {
                     weather.setHumidity((int)WeatherHourlyList.getMain().getHumidity());
                     weather.setPressure((int)WeatherHourlyList.getMain().getPressure());
                     weather.setIconId(String.valueOf(WeatherHourlyList.getWeather()[0].getIcon()));
+                    weather.setDt(WeatherHourlyList.getDt());
                     weatherList.add(weather);
                 }
             }

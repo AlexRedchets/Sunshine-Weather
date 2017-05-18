@@ -1,13 +1,13 @@
 package com.alexredchets.sunshineweather.WeatherModel.current;
 
 public class WeatherCurrentClouds {
-    private int all;
+    private double all;
 
-    public int getAll() {
+    public double getAll() {
         return this.all;
     }
 
-    public void setAll(int all) {
+    public void setAll(double all) {
         this.all = all;
     }
 }

@@ -2,11 +2,11 @@ package com.alexredchets.sunshineweather.WeatherModel.daily;
 
 public class WeatherDailyListTemp {
     private double min;
-    private int max;
-    private int eve;
+    private double max;
+    private double eve;
     private double night;
-    private int day;
-    private int morn;
+    private double day;
+    private double morn;
 
     public double getMin() {
         return this.min;
@@ -16,19 +16,19 @@ public class WeatherDailyListTemp {
         this.min = min;
     }
 
-    public int getMax() {
+    public double getMax() {
         return this.max;
     }
 
-    public void setMax(int max) {
+    public void setMax(double max) {
         this.max = max;
     }
 
-    public int getEve() {
+    public double getEve() {
         return this.eve;
     }
 
-    public void setEve(int eve) {
+    public void setEve(double eve) {
         this.eve = eve;
     }
 
@@ -40,7 +40,7 @@ public class WeatherDailyListTemp {
         this.night = night;
     }
 
-    public int getDay() {
+    public double getDay() {
         return this.day;
     }
 
@@ -48,11 +48,11 @@ public class WeatherDailyListTemp {
         this.day = day;
     }
 
-    public int getMorn() {
+    public double getMorn() {
         return this.morn;
     }
 
-    public void setMorn(int morn) {
+    public void setMorn(double morn) {
         this.morn = morn;
     }
 }

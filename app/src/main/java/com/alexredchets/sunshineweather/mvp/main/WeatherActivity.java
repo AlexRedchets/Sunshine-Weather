@@ -7,6 +7,7 @@ import android.util.Log;
 import com.alexredchets.sunshineweather.App;
 import com.alexredchets.sunshineweather.R;
 import com.alexredchets.sunshineweather.mvp.currentWeather.CurrentWeatherFragment;
+import com.alexredchets.sunshineweather.mvp.dailyForecast.DailyForecastFragment;
 import com.alexredchets.sunshineweather.mvp.hourlyForecast.HourlyForecastFragment;
 
 public class WeatherActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class WeatherActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.layout_current_weather, new CurrentWeatherFragment())
                     .add(R.id.layout_hourly_forecast, new HourlyForecastFragment())
+                    .add(R.id.layout_daily_forecast, new DailyForecastFragment())
                     .commit();
         }
     }

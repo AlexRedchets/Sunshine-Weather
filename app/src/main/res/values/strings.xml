@@ -10,5 +10,6 @@
     <string name="wind_label">\u00A0m/sec</string>
     <string name="humidity_label">\u00A0%</string>
     <string name="pressure_label">\u00A0hPa</string>
+    <string name="slash">\u00A0/\u00A0</string>
 
 </resources>

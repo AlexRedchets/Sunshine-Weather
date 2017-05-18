@@ -21,20 +21,21 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdapter.ViewHolder> {
+public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapter.ViewHolder> {
 
-    private static final String TAG = HourlyWeatherAdapter.class.getSimpleName();
+    private static final String TAG = DailyWeatherAdapter.class.getSimpleName();
     private Context mContext;
     private List<Weather> mWeatherList;
 
-    public HourlyWeatherAdapter(Context mContext) {
+    public DailyWeatherAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-    public void updateAdapter(List<Weather> weatherList) {
+    public void updateAdapter(List<Weather> weatherList){
         this.mWeatherList = weatherList;
         notifyDataSetChanged();
-        Log.i(TAG, "Adapter is updated");
+        Log.i(TAG, "Adapter updated");
+
     }
 
     @Override
@@ -43,23 +44,23 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View view = inflater.inflate(R.layout.item_hourly_weather, parent, false);
+        View view = inflater.inflate(R.layout.item_daily_weather, parent, false);
         return new ViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         Weather weather = mWeatherList.get(position);
 
-        holder.textViewTemperature.setText(String.valueOf(weather.getDayTemperature()));
-        holder.textViewDate.setText(String.valueOf(weather.getDt()));
-        String dateString = new SimpleDateFormat("h aaa", Locale.getDefault()).format(new Date(weather.getDt()*1000));
+        String dateString = new SimpleDateFormat("EEE, MMM d", Locale.getDefault()).format(new Date(weather.getDt()*1000));
         holder.textViewDate.setText(dateString);
+        holder.textViewTempDay.setText(String.valueOf(weather.getDayTemperature()));
+        holder.textViewTempNight.setText(String.valueOf(weather.getNightTemperature()));
         Glide
                 .with(mContext)
                 .load("http://openweathermap.org/img/w/" + weather.getIconId() + ".png")
-                .into(holder.imageViewWeather);
+                .into(holder.imageViewIcon);
     }
 
     @Override
@@ -69,9 +70,10 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.text_view_hourly_weather_temperature) protected TextView textViewTemperature;
-        @BindView(R.id.text_view_hourly_weather_date) protected TextView textViewDate;
-        @BindView(R.id.image_view_hourly_weather_icon) protected ImageView imageViewWeather;
+        @BindView(R.id.text_view_daily_date) protected TextView textViewDate;
+        @BindView(R.id.text_view_daily_temp_day) protected TextView textViewTempDay;
+        @BindView(R.id.text_view_daily_temp_night) protected TextView textViewTempNight;
+        @BindView(R.id.image_view_daily_icon) protected ImageView imageViewIcon;
 
         public ViewHolder(View view) {
             super(view);

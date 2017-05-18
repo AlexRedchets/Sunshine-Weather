@@ -5,7 +5,7 @@ public class WeatherDailyCity {
     private WeatherDailyCityCoord coord;
     private String name;
     private int id;
-    private int population;
+    private double population;
 
     public String getCountry() {
         return this.country;
@@ -39,11 +39,11 @@ public class WeatherDailyCity {
         this.id = id;
     }
 
-    public int getPopulation() {
+    public double getPopulation() {
         return this.population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(double population) {
         this.population = population;
     }
 }

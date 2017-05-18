@@ -5,7 +5,7 @@ public class WeatherHourlyListMain {
     private double temp_min;
     private double grnd_level;
     private double temp_kf;
-    private int humidity;
+    private double humidity;
     private double pressure;
     private double sea_level;
     private double temp_max;
@@ -42,11 +42,11 @@ public class WeatherHourlyListMain {
         this.temp_kf = temp_kf;
     }
 
-    public int getHumidity() {
+    public double getHumidity() {
         return this.humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
 

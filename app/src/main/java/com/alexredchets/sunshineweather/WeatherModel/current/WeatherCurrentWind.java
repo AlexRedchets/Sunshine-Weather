@@ -1,14 +1,14 @@
 package com.alexredchets.sunshineweather.WeatherModel.current;
 
 public class WeatherCurrentWind {
-    private int deg;
+    private double deg;
     private double speed;
 
-    public int getDeg() {
+    public double getDeg() {
         return this.deg;
     }
 
-    public void setDeg(int deg) {
+    public void setDeg(double deg) {
         this.deg = deg;
     }
 

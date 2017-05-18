@@ -28,7 +28,7 @@ public interface WeatherApi {
             @Query("appid") String appid
     );
 
-    @GET("daily?")
+    @GET("forecast/daily?")
     Observable<WeatherDaily> getDailyWeather(
             @Query("lat") String latitude,
             @Query("lon") String longitude,

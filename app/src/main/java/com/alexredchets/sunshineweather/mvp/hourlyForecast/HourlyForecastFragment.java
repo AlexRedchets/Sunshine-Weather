@@ -44,8 +44,7 @@ public class HourlyForecastFragment extends Fragment implements WeatherInterface
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView: ");
-        View mView;
-        mView = inflater.inflate(R.layout.fragment_hourly_forecast, container, false);
+        View mView = inflater.inflate(R.layout.fragment_hourly_forecast, container, false);
         ButterKnife.bind(this, mView);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);

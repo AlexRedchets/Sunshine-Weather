@@ -3,10 +3,10 @@ package com.alexredchets.sunshineweather.WeatherModel.current;
 public class WeatherCurrent {
     private int dt;
     private WeatherCurrentCoord coord;
-    private int visibility;
+    private double visibility;
     private WeatherCurrentWeather[] weather;
     private String name;
-    private int cod;
+    private double cod;
     private WeatherCurrentMain main;
     private WeatherCurrentClouds clouds;
     private int id;
@@ -30,11 +30,11 @@ public class WeatherCurrent {
         this.coord = coord;
     }
 
-    public int getVisibility() {
+    public double getVisibility() {
         return this.visibility;
     }
 
-    public void setVisibility(int visibility) {
+    public void setVisibility(double visibility) {
         this.visibility = visibility;
     }
 
@@ -54,11 +54,11 @@ public class WeatherCurrent {
         this.name = name;
     }
 
-    public int getCod() {
+    public double getCod() {
         return this.cod;
     }
 
-    public void setCod(int cod) {
+    public void setCod(double cod) {
         this.cod = cod;
     }
 

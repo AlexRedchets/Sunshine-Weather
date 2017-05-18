@@ -2,10 +2,10 @@ package com.alexredchets.sunshineweather.WeatherModel.current;
 
 public class WeatherCurrentSys {
     private String country;
-    private int sunrise;
-    private int sunset;
-    private int id;
-    private int type;
+    private double sunrise;
+    private double sunset;
+    private double id;
+    private double type;
     private double message;
 
     public String getCountry() {
@@ -16,35 +16,35 @@ public class WeatherCurrentSys {
         this.country = country;
     }
 
-    public int getSunrise() {
+    public double getSunrise() {
         return this.sunrise;
     }
 
-    public void setSunrise(int sunrise) {
+    public void setSunrise(double sunrise) {
         this.sunrise = sunrise;
     }
 
-    public int getSunset() {
+    public double getSunset() {
         return this.sunset;
     }
 
-    public void setSunset(int sunset) {
+    public void setSunset(double sunset) {
         this.sunset = sunset;
     }
 
-    public int getId() {
+    public double getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(double id) {
         this.id = id;
     }
 
-    public int getType() {
+    public double getType() {
         return this.type;
     }
 
-    public void setType(int type) {
+    public void setType(double type) {
         this.type = type;
     }
 

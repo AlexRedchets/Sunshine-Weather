@@ -37,7 +37,7 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
 
         mRetrofit.create(WeatherApi.class).getDailyWeather("52.051503",
                 "113.471191",
-                5,
+                10,
                 "metric",
                 "d73975775ce9c90c9b05799d119ef5e9")
                 .subscribeOn(Schedulers.newThread())
