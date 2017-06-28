@@ -1,5 +1,6 @@
 package com.alexredchets.sunshineweather.mvp.main;
 
+import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -7,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -49,6 +49,8 @@ public class SplashActivity extends AppCompatActivity implements
         Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        Application app = (App)getApplication();
 
         ((App)getApplication()).provideAppComponent().inject(this);
 

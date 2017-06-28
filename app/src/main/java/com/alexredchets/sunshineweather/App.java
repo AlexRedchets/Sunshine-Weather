@@ -18,14 +18,14 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        provideAppComponent();
+    }
 
+    public AppComponent provideAppComponent(){
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this,
                         "http://api.openweathermap.org/data/2.5/"))
                 .build();
-    }
-
-    public AppComponent provideAppComponent(){
         return mAppComponent;
     }
 
@@ -34,11 +34,17 @@ public class App extends Application {
     }
 
     public WeatherComponent provideCurrentWeatherComponent(WeatherInterface.CurrentWeatherFragmentInterface view){
+        if (mAppComponent == null) {
+            provideAppComponent();
+        }
         mCurrentWeatherComponent = mAppComponent.plus(new WeatherModule(view));
         return mCurrentWeatherComponent;
     }
 
     public WeatherComponent provideWeatherComponent(WeatherInterface.WeatherFragmentInterface view){
+        if (mAppComponent == null) {
+            provideAppComponent();
+        }
         mWeatherComponent = mAppComponent.plus(new WeatherModule(view));
         return mWeatherComponent;
     }
