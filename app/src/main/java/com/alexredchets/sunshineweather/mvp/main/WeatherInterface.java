@@ -22,7 +22,7 @@ public interface WeatherInterface {
 
     interface WeatherPresenterInterface{
 
-        void fetchData();
+        void fetchData(String lat, String lon);
 
         void fetchDataDB();
     }

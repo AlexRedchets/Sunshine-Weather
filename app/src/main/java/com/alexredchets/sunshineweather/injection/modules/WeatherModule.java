@@ -9,27 +9,26 @@ import dagger.Provides;
 @Module
 public class WeatherModule {
 
-    private WeatherInterface.WeatherFragmentInterface view;
-    private WeatherInterface.CurrentWeatherFragmentInterface currentWeatherView;
+    private WeatherInterface.WeatherFragmentInterface mView;
+    private WeatherInterface.CurrentWeatherFragmentInterface mCurrentWeatherView;
 
     public WeatherModule(WeatherInterface.WeatherFragmentInterface view) {
-        this.view = view;
+        this.mView = view;
     }
 
     public WeatherModule(WeatherInterface.CurrentWeatherFragmentInterface currentWeatherView) {
-        this.currentWeatherView = currentWeatherView;
+        this.mCurrentWeatherView = currentWeatherView;
     }
 
     @Provides
     @PerActivity
-    WeatherInterface.WeatherFragmentInterface getView(){
-        return view;
+    WeatherInterface.WeatherFragmentInterface provideView(){
+        return mView;
     }
 
     @Provides
     @PerActivity
-    WeatherInterface.CurrentWeatherFragmentInterface getcurrentWeatherView(){
-        return currentWeatherView;
+    WeatherInterface.CurrentWeatherFragmentInterface provideCurrentWeatherView(){
+        return mCurrentWeatherView;
     }
-
 }

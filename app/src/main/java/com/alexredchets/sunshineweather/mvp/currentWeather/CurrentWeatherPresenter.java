@@ -30,12 +30,12 @@ public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresente
     WeatherMapper mWeatherMapper;
 
     @Override
-    public void fetchData() {
+    public void fetchData(String lat, String lon) {
 
         Log.i(TAG, "fetchData started");
 
-        mRetrofit.create(WeatherApi.class).getCurrentWeather("52.051503",
-                "113.471191",
+        mRetrofit.create(WeatherApi.class).getCurrentWeather(lat,
+                lon,
                 "metric",
                 "d73975775ce9c90c9b05799d119ef5e9")
                 .subscribeOn(Schedulers.newThread())

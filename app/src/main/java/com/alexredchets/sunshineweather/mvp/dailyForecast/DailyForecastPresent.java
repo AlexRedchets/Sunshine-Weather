@@ -19,24 +19,25 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
 
     private static final String TAG = DailyForecastPresent.class.getSimpleName();
     private Retrofit mRetrofit;
-    private WeatherInterface.WeatherFragmentInterface mVew;
+    private WeatherInterface.WeatherFragmentInterface mView;
 
     @Inject
-    public DailyForecastPresent(Retrofit mRetrofit, WeatherInterface.WeatherFragmentInterface mVew) {
+    public DailyForecastPresent(Retrofit mRetrofit,
+                                WeatherInterface.WeatherFragmentInterface mView) {
         this.mRetrofit = mRetrofit;
-        this.mVew = mVew;
+        this.mView = mView;
     }
 
     @Inject
     protected WeatherMapper mWeatherMapper;
 
     @Override
-    public void fetchData() {
+    public void fetchData(String lat, String lon) {
 
         Log.i(TAG, "fetchData started");
 
-        mRetrofit.create(WeatherApi.class).getDailyWeather("52.051503",
-                "113.471191",
+        mRetrofit.create(WeatherApi.class).getDailyWeather(lat,
+                lon,
                 10,
                 "metric",
                 "d73975775ce9c90c9b05799d119ef5e9")
@@ -46,12 +47,12 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
                             Log.e(TAG, "Successfully got data");
 
                             List<Weather> mWeatherList = mWeatherMapper.mapDailyWeather(response);
-                            mVew.onComplete(mWeatherList);
+                            mView.onComplete(mWeatherList);
                         },
                         throwable -> {
                             Log.e("Error", throwable.getMessage());
 
-                            mVew.onError(throwable.getMessage());
+                            mView.onError(throwable.getMessage());
                         });
 
     }

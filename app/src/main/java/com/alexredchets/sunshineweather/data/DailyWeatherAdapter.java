@@ -59,7 +59,7 @@ public class DailyWeatherAdapter extends RecyclerView.Adapter<DailyWeatherAdapte
         holder.textViewTempNight.setText(String.valueOf(weather.getNightTemperature()));
         Glide
                 .with(mContext)
-                .load("http://openweathermap.org/img/w/" + weather.getIconId() + ".png")
+                .load("http://104.131.37.13:8888/routes/image/" + weather.getIconId())
                 .into(holder.imageViewIcon);
     }
 

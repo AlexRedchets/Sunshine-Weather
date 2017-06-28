@@ -51,7 +51,7 @@ public class CurrentWeatherAdapter {
         mTextViewDate.setText(dateString);
         Glide
                 .with(mContext)
-                .load("http://openweathermap.org/img/w/" + mWeather.getIconId() + ".png")
+                .load("http://104.131.37.13:8888/routes/image/" + mWeather.getIconId())
                 .into(mImageViewIcon);
     }
 }

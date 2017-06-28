@@ -58,7 +58,7 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
         holder.textViewDate.setText(dateString);
         Glide
                 .with(mContext)
-                .load("http://openweathermap.org/img/w/" + weather.getIconId() + ".png")
+                .load("http://104.131.37.13:8888/routes/image/" + weather.getIconId())
                 .into(holder.imageViewWeather);
     }
 

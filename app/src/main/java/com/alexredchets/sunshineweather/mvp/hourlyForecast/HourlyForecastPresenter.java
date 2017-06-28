@@ -22,7 +22,8 @@ public class HourlyForecastPresenter implements WeatherInterface.WeatherPresente
     private WeatherInterface.WeatherFragmentInterface mView;
 
     @Inject
-    public HourlyForecastPresenter(Retrofit mRetrofit, WeatherInterface.WeatherFragmentInterface mView) {
+    public HourlyForecastPresenter(Retrofit mRetrofit,
+                                   WeatherInterface.WeatherFragmentInterface mView) {
         this.mRetrofit = mRetrofit;
         this.mView = mView;
     }
@@ -31,13 +32,13 @@ public class HourlyForecastPresenter implements WeatherInterface.WeatherPresente
     protected WeatherMapper mWeatherMapper;
 
     @Override
-    public void fetchData() {
+    public void fetchData(String lat, String lon) {
 
         Log.i(TAG, "fetchData started");
 
-        mRetrofit.create(WeatherApi.class).getHourlyWeather("52.051503",
-                "113.471191",
-                5,
+        mRetrofit.create(WeatherApi.class).getHourlyWeather(lat,
+                lon,
+                8,
                 "metric",
                 "d73975775ce9c90c9b05799d119ef5e9")
                 .subscribeOn(Schedulers.newThread())

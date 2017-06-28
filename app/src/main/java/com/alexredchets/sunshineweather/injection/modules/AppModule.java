@@ -1,6 +1,9 @@
 package com.alexredchets.sunshineweather.injection.modules;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -26,6 +29,12 @@ public class AppModule {
     @Provides
     Application provideApplication(){
         return mApplication;
+    }
+
+    @Singleton
+    @Provides
+    SharedPreferences provideSharedPreferences(Application mApplication){
+        return PreferenceManager.getDefaultSharedPreferences(mApplication);
     }
 
     @Singleton

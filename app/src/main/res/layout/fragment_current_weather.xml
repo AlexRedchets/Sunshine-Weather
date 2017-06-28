@@ -9,19 +9,23 @@
         android:id="@+id/text_view_weather_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/instance"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/text_view_weather_comma_space"
-        android:layout_alignBaseline="@+id/text_view_weather_country"/>
+        android:layout_alignBaseline="@+id/text_view_weather_country"
+        android:text="@string/instance"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_comma_space"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/comma_space"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/text_view_weather_country"
-        android:layout_alignBaseline="@+id/text_view_weather_country"/>
+        android:layout_alignBaseline="@+id/text_view_weather_country"
+        android:text="@string/comma_space"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_country"
@@ -29,115 +33,141 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:text="@string/instance"/>
+        android:text="@string/instance"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_temperature_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/temperature"
         android:layout_marginTop="29dp"
         android:layout_alignTop="@+id/image_view_weather_icon"
-        android:layout_toStartOf="@+id/text_view_weather_temperature" />
+        android:layout_toStartOf="@+id/text_view_weather_temperature"
+        android:text="@string/temperature"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_celsius_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/temperature_label"
         android:layout_alignBaseline="@+id/text_view_weather_temperature_label"
         android:layout_alignBottom="@+id/text_view_weather_temperature_label"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:text="@string/temperature_label"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/instance"
         android:layout_alignBaseline="@+id/text_view_weather_temperature_label"
         android:layout_alignBottom="@+id/text_view_weather_temperature_label"
-        android:layout_toStartOf="@+id/text_view_celsius_label"/>
+        android:layout_toStartOf="@+id/text_view_celsius_label"
+        android:text="@string/instance"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
 
     <TextView
         android:id="@+id/text_view_weather_wind_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/wind"
         android:layout_below="@+id/text_view_weather_temperature_label"
-        android:layout_toStartOf="@+id/text_view_weather_wind" />
+        android:layout_toStartOf="@+id/text_view_weather_wind"
+        android:text="@string/wind"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_meter_per_second_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/wind_label"
         android:layout_below="@+id/text_view_weather_temperature"
         android:layout_alignParentEnd="true"
-        android:layout_alignBaseline="@+id/text_view_weather_wind_label"/>
+        android:layout_alignBaseline="@+id/text_view_weather_wind_label"
+        android:text="@string/wind_label"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_wind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/instance"
         android:layout_below="@+id/text_view_weather_temperature"
         android:layout_toStartOf="@+id/text_view_meter_per_second_label"
-        android:layout_alignBaseline="@+id/text_view_weather_wind_label"/>
+        android:layout_alignBaseline="@+id/text_view_weather_wind_label"
+        android:text="@string/instance"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_pressure_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pressure"
         android:layout_alignBaseline="@+id/text_view_weather_pressure"
         android:layout_alignBottom="@+id/text_view_weather_pressure"
-        android:layout_toStartOf="@+id/text_view_weather_pressure" />
+        android:layout_toStartOf="@+id/text_view_weather_pressure"
+        android:text="@string/pressure"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_pascal_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pressure_label"
         android:layout_alignBaseline="@+id/text_view_weather_pressure"
         android:layout_alignBottom="@+id/text_view_weather_pressure"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:text="@string/pressure_label"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
 
     <TextView
         android:id="@+id/text_view_weather_pressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/instance"
         android:layout_below="@+id/text_view_weather_wind"
-        android:layout_toStartOf="@id/text_view_pascal_label"/>
+        android:layout_toStartOf="@id/text_view_pascal_label"
+        android:text="@string/instance"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_weather_humidity_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/humidity"
         android:layout_alignBaseline="@+id/text_view_weather_humidity"
         android:layout_alignBottom="@+id/text_view_weather_humidity"
-        android:layout_toStartOf="@+id/text_view_weather_humidity" />
+        android:layout_toStartOf="@+id/text_view_weather_humidity"
+        android:text="@string/humidity"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/text_view_percentage_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/humidity_label"
         android:layout_alignBaseline="@+id/text_view_weather_humidity"
         android:layout_alignBottom="@+id/text_view_weather_humidity"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:text="@string/humidity_label"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
 
     <TextView
         android:id="@+id/text_view_weather_humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/instance"
         android:layout_below="@+id/text_view_weather_pressure"
-        android:layout_toStartOf="@id/text_view_percentage_label"/>
+        android:layout_toStartOf="@id/text_view_percentage_label"
+        android:text="@string/instance"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <ImageView
         android:id="@+id/image_view_weather_icon"
@@ -152,6 +182,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
 </RelativeLayout>

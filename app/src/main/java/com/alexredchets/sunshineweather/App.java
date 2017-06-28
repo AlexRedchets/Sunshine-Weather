@@ -29,6 +29,10 @@ public class App extends Application {
         return mAppComponent;
     }
 
+    public void releaseAppComponent(){
+        mAppComponent = null;
+    }
+
     public WeatherComponent provideCurrentWeatherComponent(WeatherInterface.CurrentWeatherFragmentInterface view){
         mCurrentWeatherComponent = mAppComponent.plus(new WeatherModule(view));
         return mCurrentWeatherComponent;
