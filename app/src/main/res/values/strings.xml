@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sunshine Weather</string>
+    <string name="app_name">Sunshine</string>
     <string name="instance">--</string>
     <string name="temperature">Temperature:\u00A0</string>
     <string name="wind">Wind:\u00A0</string>

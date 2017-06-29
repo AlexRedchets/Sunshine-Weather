@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -234,9 +235,11 @@ public class SplashActivity extends AppCompatActivity implements
                 .putString("longitude", currentLongitude)
                 .apply();
 
-        Intent i = new Intent(SplashActivity.this,
-                                WeatherActivity.class);
-        startActivity(i);
-        finish();
+        new Handler().postDelayed(() -> {
+            Intent i = new Intent(SplashActivity.this,
+                    WeatherActivity.class);
+            startActivity(i);
+            finish();
+        }, 3000);
     }
 }
