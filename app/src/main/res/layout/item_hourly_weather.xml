@@ -8,10 +8,6 @@
     android:layout_marginEnd="2.5dp"
     android:orientation="vertical"
     android:background="#fff">
-    <ImageView
-        android:id="@+id/image_view_hourly_weather_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:text="@string/comma_space"
+            android:text="@string/slash"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"/>
         <TextView
@@ -33,6 +29,10 @@
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"/>
     </LinearLayout>
+    <ImageView
+        android:id="@+id/image_view_hourly_weather_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
     <TextView
         android:id="@+id/text_view_hourly_weather_date"
         android:layout_width="wrap_content"

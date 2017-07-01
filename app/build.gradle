@@ -63,4 +63,7 @@ dependencies {
 
     //Google Play Location Service
     compile 'com.google.android.gms:play-services-location:10.2.6'
+
+    //ACRA
+    compile 'ch.acra:acra:4.9.2'
 }

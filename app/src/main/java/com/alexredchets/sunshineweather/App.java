@@ -1,6 +1,7 @@
 package com.alexredchets.sunshineweather;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.alexredchets.sunshineweather.injection.components.AppComponent;
 import com.alexredchets.sunshineweather.injection.components.DaggerAppComponent;
@@ -9,6 +10,10 @@ import com.alexredchets.sunshineweather.injection.modules.AppModule;
 import com.alexredchets.sunshineweather.injection.modules.WeatherModule;
 import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 
+import org.acra.ACRA;
+import org.acra.annotation.ReportsCrashes;
+
+@ReportsCrashes
 public class App extends Application {
 
     private AppComponent mAppComponent;
@@ -55,5 +60,11 @@ public class App extends Application {
 
     public void releaseWeatherComponent(){
         mWeatherComponent = null;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        ACRA.init(this);
     }
 }
