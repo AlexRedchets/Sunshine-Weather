@@ -17,6 +17,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.alexredchets.sunshineweather.App;
@@ -49,6 +51,7 @@ public class SplashActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_splash);
 
         Application app = (App)getApplication();
