@@ -5,8 +5,6 @@ import com.alexredchets.sunshineweather.injection.scopes.PerActivity;
 import com.alexredchets.sunshineweather.mvp.currentWeather.CurrentWeatherFragment;
 import com.alexredchets.sunshineweather.mvp.dailyForecast.DailyForecastFragment;
 import com.alexredchets.sunshineweather.mvp.hourlyForecast.HourlyForecastFragment;
-import com.alexredchets.sunshineweather.mvp.main.SplashActivity;
-import com.alexredchets.sunshineweather.mvp.main.WeatherActivity;
 
 import dagger.Subcomponent;
 

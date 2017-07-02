@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 
 public abstract class BaseFragment extends Fragment {
 
-    private static final String TAG = BaseFragment.class.getSimpleName();
     private ProgressDialog mProgressDialog;
 
     protected void showProgressDialog(String message){

@@ -2,7 +2,6 @@ package com.alexredchets.sunshineweather.mvp.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.alexredchets.sunshineweather.App;
 import com.alexredchets.sunshineweather.R;
@@ -31,11 +30,11 @@ public class WeatherActivity extends AppCompatActivity {
         }
         else {
             Timber.i("onCreate: savedInstanceState not null");
-            CurrentWeatherFragment currentWeatherFragment = (CurrentWeatherFragment)getSupportFragmentManager()
+            getSupportFragmentManager()
                     .findFragmentByTag("CurrentWeatherFragment");
-            HourlyForecastFragment hourlyForecastFragment = (HourlyForecastFragment)getSupportFragmentManager()
+            getSupportFragmentManager()
                     .findFragmentByTag("HourlyForecastFragment");
-            DailyForecastFragment dailyForecastFragment = (DailyForecastFragment)getSupportFragmentManager()
+            getSupportFragmentManager()
                     .findFragmentByTag("DailyForecastFragment");
         }
     }

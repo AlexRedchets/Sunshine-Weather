@@ -1,7 +1,6 @@
 package com.alexredchets.sunshineweather.data;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,4 +51,3 @@ public class CurrentWeatherAdapter {
                 .into(mImageViewIcon);
     }
 }
-

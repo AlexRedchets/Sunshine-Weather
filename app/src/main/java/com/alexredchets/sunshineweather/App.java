@@ -1,10 +1,7 @@
 package com.alexredchets.sunshineweather;
 
 import android.app.Application;
-import android.content.Context;
 
-import com.alexredchets.sunshineweather.BuildConfig;
-import com.alexredchets.sunshineweather.ReleaseTree;
 import com.alexredchets.sunshineweather.injection.components.AppComponent;
 import com.alexredchets.sunshineweather.injection.components.DaggerAppComponent;
 import com.alexredchets.sunshineweather.injection.components.WeatherComponent;

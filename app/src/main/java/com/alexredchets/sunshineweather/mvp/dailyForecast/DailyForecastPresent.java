@@ -1,7 +1,5 @@
 package com.alexredchets.sunshineweather.mvp.dailyForecast;
 
-import android.util.Log;
-
 import com.alexredchets.sunshineweather.WeatherApi;
 import com.alexredchets.sunshineweather.WeatherMapper;
 import com.alexredchets.sunshineweather.WeatherModel.Weather;

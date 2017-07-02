@@ -1,6 +1,5 @@
 package com.alexredchets.sunshineweather;
 
-
 import com.alexredchets.sunshineweather.WeatherModel.current.WeatherCurrent;
 import com.alexredchets.sunshineweather.WeatherModel.daily.WeatherDaily;
 import com.alexredchets.sunshineweather.WeatherModel.hourly.WeatherHourly;
