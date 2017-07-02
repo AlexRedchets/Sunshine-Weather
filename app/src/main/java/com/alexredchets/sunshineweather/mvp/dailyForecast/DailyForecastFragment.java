@@ -3,7 +3,6 @@ package com.alexredchets.sunshineweather.mvp.dailyForecast;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,7 +15,6 @@ import com.alexredchets.sunshineweather.App;
 import com.alexredchets.sunshineweather.R;
 import com.alexredchets.sunshineweather.WeatherModel.Weather;
 import com.alexredchets.sunshineweather.data.DailyWeatherAdapter;
-import com.alexredchets.sunshineweather.data.HourlyWeatherAdapter;
 import com.alexredchets.sunshineweather.mvp.base.BaseFragment;
 import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 
@@ -24,13 +22,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class DailyForecastFragment extends BaseFragment implements WeatherInterface.WeatherFragmentInterface {
 
-    private static final String TAG = DailyForecastFragment.class.getSimpleName();
     private DailyWeatherAdapter mAdapter;
     private String mLatitude;
     private String mLongitude;
@@ -40,7 +37,6 @@ public class DailyForecastFragment extends BaseFragment implements WeatherInterf
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         ((App)getActivity()
                 .getApplicationContext())
@@ -53,7 +49,6 @@ public class DailyForecastFragment extends BaseFragment implements WeatherInterf
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreateView: ");
         View mView = inflater.inflate(R.layout.fragment_daily_forecast, container, false);
         ButterKnife.bind(this, mView);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -65,7 +60,6 @@ public class DailyForecastFragment extends BaseFragment implements WeatherInterf
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
         showProgressDialog("Loading data...");
         mPresenter.fetchData(mLatitude, mLongitude);
@@ -73,7 +67,6 @@ public class DailyForecastFragment extends BaseFragment implements WeatherInterf
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "onDestroy: ");
         super.onDestroy();
         ((App)getActivity()
                 .getApplicationContext())
@@ -82,7 +75,6 @@ public class DailyForecastFragment extends BaseFragment implements WeatherInterf
 
     @Override
     public void onComplete(List<Weather> weatherList) {
-        Log.i(TAG, "onComplete: ");
         hideProgressDialog();
         if (weatherList != null) {
             mAdapter.updateAdapter(weatherList);
@@ -97,7 +89,7 @@ public class DailyForecastFragment extends BaseFragment implements WeatherInterf
 
     @Override
     public void onError(String message) {
-        Log.i(TAG, "onError: " + message);
+        Timber.e("onError: " + message);
         hideProgressDialog();
         Toast.makeText(getContext(),
                 "Cannot load data. Please try again.",

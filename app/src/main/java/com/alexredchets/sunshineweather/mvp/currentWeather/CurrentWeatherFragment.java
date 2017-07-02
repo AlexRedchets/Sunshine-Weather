@@ -18,9 +18,10 @@ import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 public class CurrentWeatherFragment extends BaseFragment implements WeatherInterface.CurrentWeatherFragmentInterface {
 
-    private static final String TAG = CurrentWeatherFragment.class.getSimpleName();
     private CurrentWeatherAdapter mAdapter;
     private String mLatitude;
     private String mLongitude;
@@ -31,7 +32,6 @@ public class CurrentWeatherFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         ((App)getActivity()
                 .getApplicationContext())
@@ -44,13 +44,11 @@ public class CurrentWeatherFragment extends BaseFragment implements WeatherInter
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreateView: ");
         return inflater.inflate(R.layout.fragment_current_weather, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onViewCreated:");
         super.onViewCreated(view, savedInstanceState);
         mAdapter = new CurrentWeatherAdapter(getActivity(), view);
         showProgressDialog("Loading data...");
@@ -67,7 +65,6 @@ public class CurrentWeatherFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onComplete(Weather weather) {
-        Log.i(TAG, "onComplete: ");
         hideProgressDialog();
         if (weather != null) {
             mAdapter.updateAdapter(weather);
@@ -81,7 +78,7 @@ public class CurrentWeatherFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onError(String message) {
-        Log.i(TAG, "onError: " + message);
+        Timber.e("onError: " + message);
         hideProgressDialog();
         Toast.makeText(getContext(),
                 "Cannot load data. Please try again.",

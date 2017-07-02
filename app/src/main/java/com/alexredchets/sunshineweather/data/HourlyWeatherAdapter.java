@@ -23,7 +23,6 @@ import butterknife.ButterKnife;
 
 public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdapter.ViewHolder> {
 
-    private static final String TAG = HourlyWeatherAdapter.class.getSimpleName();
     private Context mContext;
     private List<Weather> mWeatherList;
 
@@ -34,7 +33,6 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
     public void updateAdapter(List<Weather> weatherList) {
         this.mWeatherList = weatherList;
         notifyDataSetChanged();
-        Log.i(TAG, "Adapter is updated");
     }
 
     @Override
@@ -78,5 +76,4 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherAdap
             ButterKnife.bind(this, view);
         }
     }
-
 }

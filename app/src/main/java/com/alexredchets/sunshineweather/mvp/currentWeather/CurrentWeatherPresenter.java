@@ -12,10 +12,10 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
+import timber.log.Timber;
 
 public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresenterInterface{
 
-    private static final String TAG = CurrentWeatherPresenter.class.getSimpleName();
     private Retrofit mRetrofit;
     private WeatherInterface.CurrentWeatherFragmentInterface view;
 
@@ -32,8 +32,6 @@ public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresente
     @Override
     public void fetchData(String lat, String lon) {
 
-        Log.i(TAG, "fetchData started");
-
         mRetrofit.create(WeatherApi.class).getCurrentWeather(lat,
                 lon,
                 "metric",
@@ -41,13 +39,13 @@ public class CurrentWeatherPresenter implements WeatherInterface.WeatherPresente
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
-                            Log.e(TAG, "Successfully got data");
+                            Timber.i("Successfully got data");
 
                             Weather mWeather = mWeatherMapper.mapCurrentWeather(response);
                             view.onComplete(mWeather);
                         },
                         throwable -> {
-                            Log.e("Error", throwable.getMessage());
+                            Timber.e(throwable);
 
                             view.onError(throwable.getMessage());
                         });

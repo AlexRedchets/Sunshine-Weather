@@ -14,10 +14,10 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
+import timber.log.Timber;
 
 public class DailyForecastPresent implements WeatherInterface.WeatherPresenterInterface {
 
-    private static final String TAG = DailyForecastPresent.class.getSimpleName();
     private Retrofit mRetrofit;
     private WeatherInterface.WeatherFragmentInterface mView;
 
@@ -34,8 +34,6 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
     @Override
     public void fetchData(String lat, String lon) {
 
-        Log.i(TAG, "fetchData started");
-
         mRetrofit.create(WeatherApi.class).getDailyWeather(lat,
                 lon,
                 10,
@@ -44,13 +42,13 @@ public class DailyForecastPresent implements WeatherInterface.WeatherPresenterIn
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
-                            Log.e(TAG, "Successfully got data");
+                            Timber.i("Successfully got data");
 
                             List<Weather> mWeatherList = mWeatherMapper.mapDailyWeather(response);
                             mView.onComplete(mWeatherList);
                         },
                         throwable -> {
-                            Log.e("Error", throwable.getMessage());
+                            Timber.e(throwable);
 
                             mView.onError(throwable.getMessage());
                         });

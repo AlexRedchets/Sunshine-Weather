@@ -19,8 +19,6 @@ import butterknife.ButterKnife;
 
 public class CurrentWeatherAdapter {
 
-    private static final String TAG = CurrentWeatherAdapter.class.getSimpleName();
-
     @BindView(R.id.text_view_weather_temperature) protected TextView mTextViewTemp;
     @BindView(R.id.text_view_weather_city) protected TextView mTextViewCity;
     @BindView(R.id.text_view_weather_country) protected TextView mTextViewCountry;
@@ -40,7 +38,6 @@ public class CurrentWeatherAdapter {
     }
 
     public void updateAdapter(Weather mWeather){
-        Log.i(TAG, "updateAdapter: ");
         mTextViewTemp.setText(String.valueOf(mWeather.getDayTemperature()));
         mTextViewHumidity.setText(String.valueOf(mWeather.getHumidity()));
         mTextViewPressure.setText(String.valueOf(mWeather.getPressure()));

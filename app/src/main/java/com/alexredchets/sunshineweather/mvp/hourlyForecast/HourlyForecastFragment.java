@@ -3,7 +3,6 @@ package com.alexredchets.sunshineweather.mvp.hourlyForecast;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,10 +24,10 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class HourlyForecastFragment extends BaseFragment implements WeatherInterface.WeatherFragmentInterface{
 
-    private static final String TAG = HourlyForecastFragment.class.getSimpleName();
     private HourlyWeatherAdapter mAdapter;
     private String mLatitude;
     private String mLongitude;
@@ -39,7 +38,6 @@ public class HourlyForecastFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         ((App)getActivity()
                 .getApplicationContext())
@@ -52,7 +50,6 @@ public class HourlyForecastFragment extends BaseFragment implements WeatherInter
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreateView: ");
         View mView = inflater.inflate(R.layout.fragment_hourly_forecast, container, false);
         ButterKnife.bind(this, mView);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -64,7 +61,6 @@ public class HourlyForecastFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
         showProgressDialog("Loading data...");
         mPresenter.fetchData(mLatitude, mLongitude);
@@ -80,7 +76,6 @@ public class HourlyForecastFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onComplete(List<Weather> weatherList) {
-        Log.i(TAG, "onComplete: ");
         hideProgressDialog();
         if (weatherList != null) {
             mAdapter.updateAdapter(weatherList);
@@ -94,7 +89,7 @@ public class HourlyForecastFragment extends BaseFragment implements WeatherInter
 
     @Override
     public void onError(String message) {
-        Log.i(TAG, "onError: " + message);
+        Timber.e("onError: " + message);
         hideProgressDialog();
         Toast.makeText(getContext(),
                 "Cannot load data. Please try again.",

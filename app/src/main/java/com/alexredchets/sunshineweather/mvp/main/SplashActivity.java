@@ -17,8 +17,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.alexredchets.sunshineweather.App;
@@ -33,13 +31,13 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 
 public class SplashActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    private static final String TAG = SplashActivity.class.getSimpleName();
     private static final int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 161;
     private GoogleApiClient mGoogleApiClient;
@@ -49,7 +47,7 @@ public class SplashActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate: ");
+        Timber.i("OnCreate");
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
@@ -92,7 +90,7 @@ public class SplashActivity extends AppCompatActivity implements
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Log.i(TAG, "Location services connected.");
+        Timber.i("Location services connected.");
 
         if (ActivityCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -103,7 +101,7 @@ public class SplashActivity extends AppCompatActivity implements
             requestLocationPermission();
         } else {
             // Location permissions are already available.
-            Log.i(TAG, "Location permission already granted.");
+            Timber.i("Location permission already granted.");
             Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             if (location == null){
                 LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
@@ -118,7 +116,7 @@ public class SplashActivity extends AppCompatActivity implements
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.i(TAG, "Location services suspended. Please reconnect.");
+        Timber.i("Location services suspended. Please reconnect.");
     }
 
     @Override
@@ -141,13 +139,15 @@ public class SplashActivity extends AppCompatActivity implements
             } catch (IntentSender.SendIntentException e) {
                 // Log the error
                 e.printStackTrace();
+                Timber.e(e);
             }
         } else {
             /*
              * If no resolution is available, display a dialog to the
              * user with the error.
              */
-            Log.i(TAG, "Location services connection failed with code " + connectionResult.getErrorCode());
+            Timber.i("Location services connection failed with code "
+                    + connectionResult.getErrorCode());
         }
     }
 
@@ -157,15 +157,14 @@ public class SplashActivity extends AppCompatActivity implements
     }
 
     private void requestLocationPermission() {
-        Log.i(TAG, "Location permission NOT granted. Requesting permission.");
+        Timber.i("Location permission NOT granted. Requesting permission.");
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION)) {
             // Provide an additional rationale to the user if the permission was not granted
             // and the user would benefit from additional context for the use of the permission.
             // For example if the user has previously denied the permission.
-            Log.i(TAG,
-                    "Displaying location permission rationale to provide additional context.");
+        Timber.i("Displaying location permission rationale to provide additional context.");
 
             Snackbar.make(mView, R.string.permission_location_rationale,
                     Snackbar.LENGTH_INDEFINITE)
@@ -181,7 +180,7 @@ public class SplashActivity extends AppCompatActivity implements
 
         } else {
             // Location permission has not been granted yet. Request it directly.
-            Log.i(TAG, "Location permission has not been granted yet. Request it directly.");
+            Timber.i("Location permission has not been granted yet. Request it directly.");
 
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
@@ -196,7 +195,7 @@ public class SplashActivity extends AppCompatActivity implements
                                            @NonNull int[] grantResults) {
 
         // Received permission result for location permission.
-        Log.i(TAG, "Received response for Location permission request.");
+        Timber.i("Received response for Location permission request.");
 
         switch (requestCode){
             case MY_PERMISSIONS_REQUEST_LOCATION: {
@@ -204,11 +203,10 @@ public class SplashActivity extends AppCompatActivity implements
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Location permission has been granted, preview can be displayed
-                    Log.i(TAG, "LOCATION permission has now been granted.");
-                    //Toast.makeText(this, "Location permission has been granted.", Toast.LENGTH_SHORT).show();
+                    Timber.i("LOCATION permission has now been granted.");
                     // permission was granted
                 } else {
-                    Log.i(TAG, "LOCATION permission was NOT granted.");
+                    Timber.i("LOCATION permission was NOT granted.");
                     boolean showRationale = shouldShowRequestPermissionRationale(permissions[0]);
 
                     if (!showRationale){
@@ -224,13 +222,13 @@ public class SplashActivity extends AppCompatActivity implements
     }
 
     private void handleNewLocation(Location location) {
-        Log.i(TAG, location.toString());
+        Timber.i(location.toString());
 
         String currentLatitude = String.valueOf(location.getLatitude());
         String currentLongitude = String.valueOf(location.getLongitude());
 
-        Log.i(TAG, "currentLatitude: " + currentLatitude);
-        Log.i(TAG, "currentLongitude: " + currentLongitude);
+        Timber.i("currentLatitude: " + currentLatitude);
+        Timber.i("currentLongitude: " + currentLongitude);
 
         mPreferences
                 .edit()

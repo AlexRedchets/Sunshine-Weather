@@ -3,17 +3,19 @@ package com.alexredchets.sunshineweather;
 import android.app.Application;
 import android.content.Context;
 
+import com.alexredchets.sunshineweather.BuildConfig;
+import com.alexredchets.sunshineweather.ReleaseTree;
 import com.alexredchets.sunshineweather.injection.components.AppComponent;
 import com.alexredchets.sunshineweather.injection.components.DaggerAppComponent;
 import com.alexredchets.sunshineweather.injection.components.WeatherComponent;
 import com.alexredchets.sunshineweather.injection.modules.AppModule;
 import com.alexredchets.sunshineweather.injection.modules.WeatherModule;
 import com.alexredchets.sunshineweather.mvp.main.WeatherInterface;
+import com.crashlytics.android.Crashlytics;
 
-import org.acra.ACRA;
-import org.acra.annotation.ReportsCrashes;
+import io.fabric.sdk.android.Fabric;
+import timber.log.Timber;
 
-@ReportsCrashes
 public class App extends Application {
 
     private AppComponent mAppComponent;
@@ -23,6 +25,22 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (BuildConfig.DEBUG){
+            Timber.plant(new Timber.DebugTree(){
+                //Add the line number to the tag
+                @Override
+                protected String createStackElementTag(StackTraceElement element) {
+                    return super.createStackElementTag(element) + ": Line " + element.getLineNumber();
+                }
+            });
+        }
+        else {
+            //Release mode
+            Fabric.with(this, new Crashlytics());
+            Timber.plant(new ReleaseTree());
+        }
+
         provideAppComponent();
     }
 
@@ -60,11 +78,5 @@ public class App extends Application {
 
     public void releaseWeatherComponent(){
         mWeatherComponent = null;
-    }
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        ACRA.init(this);
     }
 }
