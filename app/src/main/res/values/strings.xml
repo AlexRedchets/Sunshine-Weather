@@ -12,5 +12,8 @@
     <string name="pressure_label">\u00A0hPa</string>
     <string name="slash">\u00A0/\u00A0</string>
     <string name="permission_location_rationale">Location permission is needed to detect your location.</string>
+    <string name="title_activity_permissions_denied">SUNSHINE does not have access to your location.</string>
+    <string name="body_activity_permissions_denied">You can turn on your location by going to
+Settings -> Apps -> Sunshine -> Permissions.</string>
 
 </resources>

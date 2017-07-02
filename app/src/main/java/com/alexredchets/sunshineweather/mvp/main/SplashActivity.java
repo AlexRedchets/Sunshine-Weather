@@ -15,7 +15,6 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -164,7 +163,7 @@ public class SplashActivity extends AppCompatActivity implements
             // Provide an additional rationale to the user if the permission was not granted
             // and the user would benefit from additional context for the use of the permission.
             // For example if the user has previously denied the permission.
-        Timber.i("Displaying location permission rationale to provide additional context.");
+            Timber.i("Displaying location permission rationale to provide additional context.");
 
             Snackbar.make(mView, R.string.permission_location_rationale,
                     Snackbar.LENGTH_INDEFINITE)
@@ -210,11 +209,10 @@ public class SplashActivity extends AppCompatActivity implements
                     boolean showRationale = shouldShowRequestPermissionRationale(permissions[0]);
 
                     if (!showRationale){
-                        Toast.makeText(this, "Loading PermissionDenied Activity", Toast.LENGTH_SHORT).show();
-                        /*Intent i = new Intent(SplashActivity.this,
-                                PermissionDeniedActivity.class);
+                        Intent i = new Intent(SplashActivity.this,
+                                PermissionsDeniedActivity.class);
                         startActivity(i);
-                        finish();*/
+                        finish();
                     }
                 }
             }
