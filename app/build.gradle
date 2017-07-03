@@ -23,7 +23,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.alexredchets.sunshineweather"
+        applicationId "com.alexredchets.sunshine"
         minSdkVersion 23
         targetSdkVersion 25
         versionCode 1
